@@ -1,10 +1,13 @@
-// show current date and time on the top of the page
-const now = moment().format("dddd MMMM d, YYYY HHmm");
+// show current date and time on the top of the page using moment
+let now = moment().format("dddd MMMM d, YYYY HHmm");
 $("#currentDay").text(now);
 
+// create variable for the current hour using moment and the targeting the each hour
 let currentHour = moment().hours()
 
+// accessing the part of each hour div that has the time block that text can be entered into and adding color to each of the time blocks based on css classes of past, present and future
 function colorHours(){
+    // 
     $(".time-block").each(function(){
         let timeBlockHour = parseInt($(this).attr("id"))
         console.log($(this).attr("id"))
