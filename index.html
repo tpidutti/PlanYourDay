@@ -28,11 +28,15 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-
+<!-- scroll down -->
     <div class="container overflow:scroll">
+      <!-- this class will allow for different background colors for each hour -->
       <div id="09" class="row time-block">
+          <!-- each time block shows an hour -->
         <div class="col-md-1 hour">0900</div>
+        <!-- will be used to save information to local storage, saveBtn sibling -->
         <textarea class="col-md-10 description"> </textarea>
+        <!-- this will be how to save, description sibling  -->
         <button class="btn saveBtn col-md-1">
           <i class="fas fa-save"></i>
         </button>

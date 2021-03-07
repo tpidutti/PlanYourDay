@@ -20,14 +20,19 @@ function colorHours() {
     }
   });
 }
+// when save button is clicked it turns on the function defined by variables of value, time and storeIt, to get the text that is in the text area called description, with the attribute of id. the save button and description are siblings.  storeIt will take what is saved in local storage under storedToDo and return it to the user or create and array that will be stored.
 $(".saveBtn").on("click", function () {
   let value = $(this).siblings(".description").val();
+  // time is defined by accessing the id attribute of the parent of this, which is the div with id of 09, 10, etc. and the classes of row time-block
   let time = $(this).parent().attr("id");
   let storeIt = JSON.parse(window.localStorage.getItem("storedToDo")) || [];
   storeIt.push({ time, value });
   window.localStorage.setItem("storedToDo", JSON.stringify(storeIt));
 });
+
+// the variable of saveToDo is defined by rearranging the information in storedToDo, accessing it and returning it to an array
 var saveToDo = JSON.parse(window.localStorage.getItem("storedToDo"));
+// access the description class 
 $(".description").each(function () {
   let id = $(this).parent().attr("id");
   for (let i = 0; i < saveToDo.length; i++) {
@@ -37,19 +42,8 @@ $(".description").each(function () {
     }
   }
 });
-
+// call the colors for the past, present and future time blocks to show up in these areas
 colorHours();
 
 
-// <!-- using a daily planner to create a schedule -->
-// <!-- open the planner -->
-// <!-- the current day is displayed at the top of the calendar -->
-// <!-- scroll down -->
-// <!-- presented with timeblocks for standard business hours -->
-// <!-- view the timeblocks for that day -->
-// <!-- each timeblock is color coded to indicate whether it is in the past, present, or future -->
-// <!-- click into a timeblock -->
-// <!-- can enter an event -->
-// <!-- click the save button for that timeblock -->
-// <!-- text for that event is saved in local storage -->
-// <!-- refresh the page saved events persist -->
+
