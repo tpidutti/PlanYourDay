@@ -5,10 +5,11 @@ $("#currentDay").text(now);
 // create variable for the current hour using moment and  targeting the each hour
 let currentHour = moment().hours();
 
-// accessing the part of each hour div that has the time block that text can be entered into and adding color to each of the time blocks based on css classes of past, present and future. continues to loop through each hour and update the background color based on the past, present and future.
+// accessing the part of each hour div that has the time block that text can be entered into and adding color to each of the time blocks based on css classes of past, present and future. continues to loop through each hour and update the background color based on its past, present or future status.
 function colorHours() {
   //
   $(".time-block").each(function () {
+    // parseInt will take the string of hours in the hourly time blocks and return the first number, here that is the specific hour in the planner
     let timeBlockHour = parseInt($(this).attr("id"));
     console.log($(this).attr("id"));
     if (currentHour > timeBlockHour) {
@@ -25,9 +26,11 @@ $(".saveBtn").on("click", function () {
   let value = $(this).siblings(".description").val();
   // time is defined by accessing the id attribute of the parent of this, which is the div with id of 09, 10, etc. and the classes of row time-block
   let time = $(this).parent().attr("id");
+  // takes string from storedToDo in local storage and makes it an object accessed by the variable of storeIt or access the array
   let storeIt = JSON.parse(window.localStorage.getItem("storedToDo")) || [];
+  // variable of storeIt has time and value variables added to it at the end
   storeIt.push({ time, value });
-  // 
+  // accesses the local storage under storedToDo and turn the object of storeIt, time and value into object
   window.localStorage.setItem("storedToDo", JSON.stringify(storeIt));
 });
 
