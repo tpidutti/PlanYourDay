@@ -7,7 +7,6 @@ let currentHour = moment().hours();
 
 // accessing the part of each hour div that has the time block that text can be entered into and adding color to each of the time blocks based on css classes of past, present and future. continues to loop through each hour and update the background color based on its past, present or future status.
 function colorHours() {
-  //
   $(".time-block").each(function () {
     // parseInt will take the string of hours in the hourly time blocks and return the first number, here that is the specific hour in the planner
     let timeBlockHour = parseInt($(this).attr("id"));
@@ -36,7 +35,7 @@ $(".saveBtn").on("click", function () {
 
 // the variable of saveToDo is defined by rearranging the information in storedToDo, accessing it and returning it to an array
 var saveToDo = JSON.parse(window.localStorage.getItem("storedToDo"));
-// access the description class, continues to go through every hour's description area ... 
+// access the description class, continues to go through every hour's description area
 $(".description").each(function () {
   let id = $(this).parent().attr("id");
   for (let i = 0; i < saveToDo.length; i++) {
