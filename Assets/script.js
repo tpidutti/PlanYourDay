@@ -26,11 +26,11 @@ $(".saveBtn").on("click", function () {
   let value = $(this).siblings(".description").val();
   // time is defined by accessing the id attribute of the parent of this, which is the div with id of 09, 10, etc. and the classes of row time-block
   let time = $(this).parent().attr("id");
-  // takes string from storedToDo in local storage and makes it an object accessed by the variable of storeIt or access the array
+  // takes string from storedToDo in local storage and makes it an object accessed by the variable of storeIt or access the empty array
   let storeIt = JSON.parse(window.localStorage.getItem("storedToDo")) || [];
   // variable of storeIt has time and value variables added to it at the end
   storeIt.push({ time, value });
-  // accesses the local storage under storedToDo and turn the object of storeIt, time and value into object
+  // accesses the local storage under storedToDo and turn the string of storeIt, time and value into object
   window.localStorage.setItem("storedToDo", JSON.stringify(storeIt));
 });
 
